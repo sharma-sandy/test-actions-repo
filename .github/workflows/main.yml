@@ -5,4 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to check branch name
     steps:
-      - uses: sharma-sandy/check-branch-name-action@main
+      - name: Run check on branch name
+        uses: sharma-sandy/check-branch-name-action@main
+        with:
+          branch-name: $GITHUB_REF_NAME
