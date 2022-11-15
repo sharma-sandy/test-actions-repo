@@ -1,0 +1,8 @@
+on: [pull_request]
+
+jobs:
+  check_branch_name_job:
+    runs-on: ubuntu-latest
+    name: A job to check branch name
+    steps:
+      - uses: sharma-sandy/check-branch-name-action@main
