@@ -8,4 +8,4 @@ jobs:
       - name: Run check on branch name
         uses: sharma-sandy/check-branch-name-action@main
         with:
-          token: ${{GITHUB_TOKEN}}
+          token: ${{github.token}}
