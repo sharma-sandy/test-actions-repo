@@ -7,3 +7,5 @@ jobs:
     steps:
       - name: Run check on branch name
         uses: sharma-sandy/check-branch-name-action@main
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
