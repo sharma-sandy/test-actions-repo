@@ -1,9 +1,9 @@
 import requests
+import os
 
 OWNER = "sharma-sandy"
 REPO = "test-actions-repo"
 PULL_NUMBER = 13
-TOKEN = "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"
 
 
 def create_file_comment(
@@ -12,7 +12,7 @@ def create_file_comment(
     url = f"https://api.github.com/repos/{OWNER}/{REPO}/pulls/{PULL_NUMBER}/comments"
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {TOKEN}",
+        "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
     }
     data = {
         "body": message,
@@ -28,7 +28,7 @@ def create_comment(OWNER, REPO, PULL_NUMBER, message):
     url = f"https://api.github.com/repos/{OWNER}/{REPO}/issues/{PULL_NUMBER}/comments"
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {TOKEN}",
+        "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
     }
     data = {
         "body": message,
