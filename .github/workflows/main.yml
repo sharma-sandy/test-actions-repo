@@ -3,9 +3,24 @@ on: [pull_request]
 jobs:
   check_branch_name_job:
     runs-on: ubuntu-latest
-    name: A job to check branch name
+    name: A job to evaluate TAMLEP
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
-      - name: Run check on branch name
-        uses: sharma-sandy/check-branch-name-action@main
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup miniconda and activate base
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          token: ${{github.token}}
+          miniconda-version: "latest"
+          use-only-tar-bz2: true
+          add-pip-as-python-dependency: true
+          auto-activate-base: true
+          activate-environment: ""
+      - name: Setup flake8
+        run: pip install flake8 requests
+      - run: which python
+      - name: Run python script
+        run: |
+          python ./.github/workflows/sample.py
